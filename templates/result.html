@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Result</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+        <center style="margin-top: 7%">
+            {% if status == "not" %}
+            <h3>Top 10 words occurs along with Frequency directly fetched from website</h3>
+            <ul class="list-group" style="width: 400px">
+                {% for data in output %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ data.0 }}
+                    <span class="badge badge-primary badge-pill">{{ data.1 }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h3>Top 10 words occurs along with Frequency directly from database</h3>
+            <ul class="list-group" style="width: 400px">
+                {% for data in output %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ data.keyword }}
+                    <span class="badge badge-primary badge-pill">{{ data.frequency }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </center>
+    </body>
+</html>
